@@ -1,0 +1,18 @@
+<ng-container *ngIf="usuarioLogado$ | async as usuarioLogado; else formLogin">
+  <span class="rotulo">Usuário logado: {{ usuarioLogado }}</span> <button (click)="deslogar()">Deslogar</button>
+</ng-container>
+
+<ng-template #formLogin>
+  <form [formGroup]="login" (submit)="logar()" >
+    <label class="rotulo">
+			Login: <input type="text" formControlName="usuario">
+    </label>
+		
+    
+		<label class="rotulo">
+      Senha: <input type="password" formControlName="senha">
+    </label>
+    
+    <button type="submit" [disabled]="login.invalid">Logar</button>
+  </form>
+</ng-template>

@@ -1,0 +1,28 @@
+<!-- <section [class.impar]="impar" class="cabecalho">
+  <span>{{movimentacaoPregao.tipoMovimentacao.nome | titlecase }}</span>
+	<span>{{movimentacaoPregao.ativo.nome}}</span> 
+	<span>{{movimentacaoPregao.quantidade}}</span> 
+	<span>{{movimentacaoPregao.preco}}</span> 
+	<span>{{movimentacaoPregao.valorOperacao}}</span> 
+</section> -->
+<ng-container *ngFor="let resumo of m.movimentacaoPorAtivo">
+  <ng-container *ngFor="let mov1 of resumo.ativoMovimentacao; index as i">
+    <section
+      [class.impar]="i % 2 === 1"
+      class="cabecalho"
+    >
+      <span>{{ mov1.operacao | titlecase }} </span>
+      <span>{{ mov1.ativo }} </span>
+      <span>{{ mov1.quantidade }}</span>
+      <span>{{ mov1.preco }}</span>
+      <span>{{ mov1.valorOperacao }}</span>
+    </section>
+    <div *ngIf="i == resumo.ativoMovimentacao.length - 1">
+      Total: {{ resumo.valorOperacaoTotal }} - valor tx liq:
+      {{ resumo.valorTaxaLiquida }} - valor tx emol:
+      {{ resumo.valorTaxaEmolumentos }} - valor outras taxas:
+      {{ resumo.valorOutrasTaxas }}
+    </div>
+  </ng-container>
+  <ng-container> </ng-container
+></ng-container>

@@ -1,0 +1,37 @@
+<h2>Proventos</h2>
+
+<form [formGroup]="formulario">
+  <label *ngIf="consultaAnos$ | async as anos" class="rotulo" for="ano">
+    Ano:
+    <select id="ano" formControlName="ano">
+      <!-- o async faz o subscribe e o unsubscribe p a gente
+automaticamente-->
+      <option *ngFor="let ano of anos" [value]="ano.ano">{{ ano.ano }}</option>
+    </select>
+  </label>
+</form>
+
+
+  <!-- <div class="provento" [ngStyle]="{ 'height': (jan2022.total/ 250).toFixed(2) + 'rem' }">
+    {{ jan2022.mes }} -
+    {{ jan2022.total }}
+  </div>
+  <div class="provento" [ngStyle]="{ 'height': (fev2022.total/ 250).toFixed(2) + 'rem' }">
+    {{ fev2022.mes }} -
+    {{ fev2022.total }}
+  </div>
+  <div class="provento" [ngStyle]="{ 'height': (jan2021.total/ 250).toFixed(2) + 'rem' }">
+    {{ jan2021.mes }} -
+    {{ jan2021.total }}
+  </div>  
+</section> -->
+
+<!-- <ng-container *ngFor="let provento of consultaProventos$ | async">
+  <app-provento-ano [ano]="provento.data | slice: 0:4"></app-provento-ano>
+</ng-container> -->
+<section class="proventos-total">
+	<ng-container  *ngFor="let proventoAno of totalProventosGeral.anos ">				
+		<span>{{proventoAno.ano}}</span>
+		<app-provento-ano class="proventos-ano" [proventoAno]="proventoAno"></app-provento-ano>		
+	</ng-container>	
+</section>

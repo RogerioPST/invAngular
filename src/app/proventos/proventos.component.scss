@@ -1,0 +1,22 @@
+.proventos-total {	
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;   
+}
+
+.proventos-ano {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;  
+	height: 10rem;
+	width: 20%;
+}
+
+
+.proventos-ano-grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;	
+	margin: 2px;
+}
+

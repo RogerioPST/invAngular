@@ -1,0 +1,41 @@
+<header>
+  <h1>Pregão!</h1>
+</header>
+
+<label class="rotulo"> Dia: <input type="date" [formControl]="formDia" /> </label>
+
+
+<ng-container *ngFor="let pregao of (consultaPregoes$ | async) ">
+
+
+	<div class="pregao">
+		<span>DATA DO PREGÃO: {{pregao.data}}</span>
+		<span>COMPRAS À VISTA: {{pregao.comprasAVista}}</span>
+		<span>VENDAS À VISTA: {{pregao.vendasAVista}}</span>
+		<span>VALOR DAS OPERAÇÕES: {{pregao.valorOperacoes}}</span>
+		<span>VALOR LÍQUIDO DAS OPERAÇÕES: {{pregao.valorLiquidoOperacoes}}</span>
+		<span>TAXA DE LIQUIDAÇÃO: {{pregao.taxaLiquidacao}}</span>
+		<span>TOTAL CBLC: {{pregao.totalCblc}}</span>
+		<span>EMOLUMENTOS: {{pregao.emolumentos}}</span>
+		<span>CUSTOS OPERACIONAIS:</span>
+		<span>TAXA OPERACIONAL: {{pregao.taxaOperacional}}</span>
+		<span>IMPOSTOS: {{pregao.impostos}}</span>
+		<span>OUTROS: {{pregao.outros}}</span>
+		<span>TOTAL CUSTOS/DESPESAS: {{pregao.totalCustosDespesas}}</span>
+		<span>LÍQUIDO PARA: {{pregao.dataLiquidoPara}} - 	{{pregao.valorLiquidoPara}}</span>
+	</div>
+	
+		<div class="cabecalho">
+			<span>C/V</span>
+			<span>Ativo</span>
+			<span>Quantidade</span>
+			<span>Preço</span>
+			<span>Valor Operação</span>
+		</div>
+
+
+	<app-tabela-movimentacoes
+	[data]="pregao.data"
+	></app-tabela-movimentacoes>
+
+</ng-container>
